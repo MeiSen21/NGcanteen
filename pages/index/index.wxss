@@ -1,0 +1,44 @@
+/**index.wxss**/
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.userinfo-avatar {
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+
+.userinfo-nickname {
+  color: #aaa;
+}
+
+.usermotto {
+  margin-top: 200px;
+}
+
+.LunBo1{
+width: 600rpx;
+height: 400rpx;
+margin: 20rpx;
+}
+.WaiKuang{
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  width: 600rpx;
+  height: 400rpx;
+  border: 1rpx solid red;
+}
+.NeiKuang{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 250rpx;
+  height: 400rpx;
+  border: 1rpx solid green;
+}

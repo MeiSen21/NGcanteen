@@ -1,0 +1,28 @@
+<!--pages/try/try.wxml-->
+<text>pages/try/try.wxml</text>
+<block>
+<text>当前时间：{{time}}</text>
+<view wx:if="{{val>5}}">True 5</view>
+<view wx:elif="{{val>2}}">false 2</view>
+<view wx:else>cao ni ma</view>
+<view wx:for="{{array}}"  wx:key="*this">
+  {{index}}: {{item.message}}
+</view>
+<view wx:for="{{array1}}" wx:key="*this"  wx:for-index="idx" wx:for-item="itemName">
+  {{idx}}: {{itemName.message1}}
+</view>
+<!-- <switch wx:for="{{objectArray}}" wx:key="unique" > {{item.id}} </switch>
+<button bindtap="switch"> Switch </button>
+<button bindtap="addToFront"> Add to the front </button>
+
+
+<switch wx:for="{{numberArray}}" wx:key="*this" > {{item}} </switch>
+<button bindtap="addNumberToFront"> Add Number to the front </button> -->
+<template name="msgItem">
+  <view>
+    <text> {{index}}: {{msg}} </text>
+    <text> Time: {{time}} </text>
+  </view>
+</template>
+<template is="msgItem" data="{{...item}}"/>
+</block>

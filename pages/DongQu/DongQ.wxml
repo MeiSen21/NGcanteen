@@ -1,0 +1,20 @@
+<!--pages/DongQu/DongQ.wxml-->
+
+<view class="container">
+
+  <navigator url="/pages/DongQu/D1/Dong1">
+  <view class="Dong D1">
+     <text>东一食堂</text>
+  </view>
+ </navigator>
+
+  <view class="Dong D2">
+    <text>东二食堂</text>
+
+  </view>
+
+  <view class="Dong Dx">
+    <text>东小吃街</text>
+
+  </view>
+</view>

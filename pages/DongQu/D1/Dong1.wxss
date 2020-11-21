@@ -1,0 +1,17 @@
+/* pages/DongQu/D1/Dong1.wxss */
+.container{
+  display: flex;
+  flex-direction: row;
+  width: 750rpx;
+  height: 1000rpx;
+  border: 2px solid green;
+}
+.Dong{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 220rpx;
+  height: 1000rpx;
+  border: 1px solid red;
+
+}

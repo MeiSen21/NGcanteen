@@ -1,0 +1,26 @@
+/* pages/DongQu/DongQ.wxss */
+.container{
+  display: flex;
+  flex-direction: column;
+  width: 750rpx;
+  height: 1000rpx;
+  border: 2px solid green;
+}
+.Dong{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 750rpx;
+  height: 550rpx;
+  border: 1px solid red;
+
+}
+.D1{
+  background-color: green;
+}
+.D2{
+  background-color: red;
+}
+.Dx{
+  background-color: burlywood;
+}
