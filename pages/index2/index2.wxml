@@ -1,0 +1,5 @@
+<button bindtap="load">添加图片</button>
+<image src="{{imageUrl}}" bindload="addImage"></image>
+
+<button bindtap="judge">评价</button>
+<input placeholder="输入评价" bindinput="addJudge"></input>

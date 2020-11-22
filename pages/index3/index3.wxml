@@ -1,0 +1,9 @@
+<button bindtap="getData">评价展示</button>
+
+<view wx:for="{{datalist}}">
+<view>{{item.judge}}</view>
+<image src="{{item.image}}" ></image>
+
+<view></view>
+
+</view>

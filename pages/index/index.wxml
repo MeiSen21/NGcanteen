@@ -1,0 +1,8 @@
+<button bindtap="load">添加图片</button>
+<button bindtap="judge">评价</button>
+<input placeholder="输入名称" bindinput="addName"></input>
+<input placeholder="年龄" bindinput="addAge"></input>
+
+
+<image bindtap="addImage" src="{{imageUrl}}"></image>
+<image id="test1" src="{{imageUrl1}}"></image>
