@@ -1,8 +1,10 @@
 {
   "pages": [
+    "pages/test_gai/test_gai",
     "pages/index/index",
     "pages/try/try",
     "pages/logs/logs",
+    
     "pages/DongQu/DongQ",
     "pages/DongQu/D1/Dong1"
   ],
