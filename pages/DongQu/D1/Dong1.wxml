@@ -1,25 +1,22 @@
 <!--pages/DongQu/D1/Dong1.wxml-->
 <view class="container">
 
+<navigator url="/pages/DongQu/D1/D11floor/Dong11f">
   <view class="D1-1 Dong">
     <text>
-      东区1楼
+      东一1楼
     </text>
 
   </view>
+</navigator>
 
   <view class="D1-2 Dong">
     <text>
-      东区2楼
+      东一2楼
     </text>
 
   </view>
 
-  <view class="D1-x Dong">
-    <text>
-      东区小吃街
-    </text>
-
-  </view>
+ 
 
 </view>

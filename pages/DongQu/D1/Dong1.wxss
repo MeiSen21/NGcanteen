@@ -10,7 +10,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 220rpx;
+  width: 360rpx;
   height: 1000rpx;
   border: 1px solid red;
 

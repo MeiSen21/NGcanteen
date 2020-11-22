@@ -1,0 +1,64 @@
+/* pages/Cai/D1/D1-1L-1D/D1-1L-1D-C1/cai1.wxss */
+
+.listitem{
+  display: flex;
+  flex-direction: row;
+  width: 750rpx;
+  height: 300rpx;
+  border: 1px solid red;
+}
+.panel-image{
+display: flex;
+justify-content: center;
+align-items: center;
+width: 220rpx;
+height: 300rpx;
+}
+.imageitem{
+width: 200rpx;
+height: 200rpx;
+}
+.panel-right{
+display: flex;
+flex-direction: column;
+margin-left: 30rpx;
+margin-top: 30rpx;
+width: 500rpx;
+height: 300rpx;
+}
+
+.panel-text{
+  margin-top: 40rpx;
+color: grey;
+height: 200rpx;
+width: 500rpx;
+}
+.ShuiYin{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 500rpx;
+  height: 50rpx;
+  color: gray;
+}
+.comment-bd{
+  width: 750rpx;
+  height: 100rpx;
+  position: fixed;
+  bottom: 0;
+  border: 1px solid greenyellow;
+}
+.comment-areahide{
+  width: 750rpx;
+  height: 700rpx;
+  background-color: white;
+  border: 1px solid black;
+  position: fixed;
+  bottom: 0;
+  transform: translateY(100%);
+  transition: all 0.3s;
+}
+.comment-areashow{
+  transform: translateY(0%);
+  transition: all 0.3s;
+}

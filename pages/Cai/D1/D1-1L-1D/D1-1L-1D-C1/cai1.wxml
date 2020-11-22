@@ -1,0 +1,58 @@
+<!--pages/Cai/D1/D1-1L-1D/D1-1L-1D-C1/cai1.wxml-->
+<view class="container">
+   
+  <view class="listitem">
+   
+   <view class="panel-image">
+     <image src="{{guanp.src}}" class="imageitem"></image>
+   </view>
+
+   <view class="panel-right">
+     <view class="ShuiYin">
+     <view>{{guanp.time}}</view> <view>{{guanp.score}}</view>
+     </view>
+     <view class="panel-text">{{guanp.text}}</view>
+   </view>        
+ 
+  </view>
+
+
+
+
+
+  <block wx:for-items="{{list}}" wx:key="{{item.id}}">
+    <navigator url="{{item.url}}">
+    <view class="listitem">
+   
+        <view class="panel-image">
+          <image src="{{item.src}}" class="imageitem"></image>
+        </view>
+
+        <view class="panel-right">
+          <view class="panel-text">{{item.text}}</view>
+          <view class="ShuiYin">
+            <view>{{item.time}}</view>  <view>{{item.score}}</view>          
+          </view>
+        </view>        
+      
+    </view>
+  </navigator>
+  </block>
+
+
+  
+</view>
+
+<view class="comment-bd">
+  <button class="comment " type="primary" bindtap="OpenType">
+    评论
+  </button>
+</view>
+
+<view class="comment-areahide {{Type?'comment-areashow': ''}} ">
+<textarea placeholder="请吐槽把！" class="comment-text" id="c-text"></textarea>
+  <view>
+    <button type="primary" bindtap="submitcom">提交</button>
+    <button bindtap="OpenType" type="default">取消</button>
+  </view>
+</view>

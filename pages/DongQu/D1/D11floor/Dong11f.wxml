@@ -1,0 +1,20 @@
+<!--pages/DongQu/D1/D11floor/Dong11f.wxml-->
+<view class="container">
+  <block wx:for-items="{{list}}" wx:key="{{item.id}}">
+    <navigator url="{{item.url}}">
+    <view class="listitem">
+   
+        <view class="panel-image">
+          <image src="{{item.src}}" class="imageitem"></image>
+        </view>
+
+        <view class="panel-right">
+          <view class="panel-title">{{item.title}}</view>
+          <view class="panel-text">{{item.text}}</view>
+        </view>        
+      
+    </view>
+  </navigator>
+  </block>
+
+</view>

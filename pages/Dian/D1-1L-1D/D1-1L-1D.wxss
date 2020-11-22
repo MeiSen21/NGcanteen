@@ -1,0 +1,39 @@
+/* pages/Dian/D1-1L-1D/D1-1L-1D.wxss */
+.listitem{
+  display: flex;
+  flex-direction: row;
+  width: 750rpx;
+  height: 300rpx;
+  border: 1px solid red;
+}
+.panel-image{
+display: flex;
+justify-content: center;
+align-items: center;
+width: 220rpx;
+height: 300rpx;
+}
+.imageitem{
+width: 200rpx;
+height: 200rpx;
+}
+.panel-right{
+display: flex;
+flex-direction: column;
+margin-left: 30rpx;
+width: 500rpx;
+height: 300rpx;
+}
+.panel-title{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+margin-top: 40rpx;
+height: 60rpx;
+width: 500rpx;
+}
+.panel-text{
+color: grey;
+height: 200rpx;
+width: 500rpx;
+}
