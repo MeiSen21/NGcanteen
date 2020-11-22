@@ -1,5 +1,5 @@
 <button bindtap="getData">评价展示</button>
-
+<view>这里进行一个测试</view>
 <view wx:for="{{datalist}}">
 <view>{{item.judge}}</view>
 <image src="{{item.image}}" ></image>
