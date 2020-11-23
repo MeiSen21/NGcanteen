@@ -1,11 +1,39 @@
 // pages/Cai/D1/D1-1L-1D/D1-1L-1D-C1/cai1.js
+const DB = wx.cloud.database().collection("judgelist")
+var util = require('../../../../../utils/util.js');
 
+
+let try1={
+  id:"",
+  src:"",
+  text:"添加评价1",
+  time: util.formatTime(new Date()),
+  score:'9'
+
+}
+
+let List=[
+  // {
+  //   id:"d1",
+  //   src:"",
+  //   text:"全局评价1",
+  //   time:'2020-11-21',
+  //   score:'2'
+  // },{
+  //   id:"d2",
+  //   src:"",
+  //   text:"全局评价2",
+  //   time:'2012-3-4',
+  //   score:'4'
+  // }
+]
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    imageUrl: "",
     Type:false,
     guanp:{
       src:'',
@@ -14,24 +42,11 @@ Page({
       score:'3.5'
 
     },
-    list:[
-      {
-        id:"d1",
-        src:"",
-        text:"草 这也是人吃的东西啊  官方什么吊推荐 误导老子",
-        time:'2020-11-21',
-        score:'2'
-      },{
-        id:"d2",
-        src:"",
-        text:"还好吧没有那么难吃",
-        time:'2012-3-4',
-        score:'4'
-      }
-    ]
+    list:[]
    
 
     },
+//评论按钮的显示/隐藏
     OpenType: function(){
       console.log(this.data.Type)
       if (this.data.Type==false) {
@@ -49,77 +64,102 @@ Page({
       }
      
   },
+
+  //图片的选择/上传
+  load(){
+    let that = this;  
+    wx.chooseImage({
+      count: 1,
+      sizeType: ['original', 'compressed'],
+      sourceType: ['album', 'camera'],
+      success(res) {
+        that.loadShow(res.tempFilePaths[0])
+      }
+    })
+  },
+  loadShow(fileUrl) {
+    wx.cloud.uploadFile({
+      cloudPath: 'anbo.png',
+      filePath: fileUrl, // 文件路径
+      success: res => {
+        // get resource ID
+        console.log("上传成功", res)
+        try1.src = res.fileID
+        this.setData({
+          imageUrl: res.fileID,
+          
+        })
+        
+      },
+      fail: err => {
+        // handle error
+      }
+    })
+  },
+  tucao(event) { 
+  
+    try1.text = event.detail.value
+    console.log(try1.text )
+    
+  },
+
   submitcom:function(){
-    var try1={
-      id:"d3",
-      src:"",
-      text:"我i独好iu都会哇哈丢啊核对后",
-      time:'2020-9-9',
-      score:'9'
 
-    }
-    console.log(try1)
-    this.data.list.push(try1)
-    console.log(this.data.list)
-    this.onLoad()
+    
+    wx.cloud.callFunction({
+      name:"getopenid",
+      success(res){
+      console.log("获取openid成功",res.result.openid)
+         try1.id=res.result.openid;
+      console.log("获取openid成功",try1.id)
+      }, 
+      fail(res){
+        console.log("获取openid失败",res)
+           
+        },
 
+
+    })
+    List.push(try1)
+
+    DB.add({
+      data: {
+        list:List
+      },
+      success(res) {
+        console.log("添加成功", res)
+
+      },
+      fail(res) {
+        console.log("添加失败", res)
+      }
+
+    })
+
+    //定义局部变量push进全局变量,进行渲染
+   
+    this.setData({
+      list:List
+
+    })
+   
   },
-
-
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad: function (options) {
+    let that=this
+    wx.cloud.database().collection("judgelist").get({
+      success(res){
+        console.log("请求成功",res)
+        that.setData({
+          list:res.data[0].list
+          
+        })
+      },
+      fail(res){
+        console.log("请求失败",res)
+      }
+    })
 
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
 
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
 })

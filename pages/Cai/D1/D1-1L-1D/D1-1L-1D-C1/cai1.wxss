@@ -1,5 +1,24 @@
 /* pages/Cai/D1/D1-1L-1D/D1-1L-1D-C1/cai1.wxss */
 
+.comment-sum{
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  width: 600rpx;
+  height: 400rpx;
+  border: 1rpx solid red;
+}
+.comment-text{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* align-items: center; */
+  width: 250rpx;
+  height: 400rpx;
+  border: 1rpx solid green;
+}
+
+
 .listitem{
   display: flex;
   flex-direction: row;

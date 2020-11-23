@@ -50,9 +50,17 @@
 </view>
 
 <view class="comment-areahide {{Type?'comment-areashow': ''}} ">
-<textarea placeholder="请吐槽把！" class="comment-text" id="c-text"></textarea>
+  <view class="comment-sum">
+    <image src="{{imageUrl}}" class="comment-text photo" bindload="addImage"></image>
+    <textarea placeholder="请吐槽把！" class="comment-text" id="c-text" bindinput="tucao"></textarea>
+  </view>
+
   <view>
+    <button bindtap="load">添加图片</button>
+    
+
     <button type="primary" bindtap="submitcom">提交</button>
     <button bindtap="OpenType" type="default">取消</button>
+
   </view>
 </view>
