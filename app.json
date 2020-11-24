@@ -7,13 +7,13 @@
 
 
     "pages/test/test",
-
+    
 
     "pages/DongQu/DongQ",
     "pages/DongQu/D1/Dong1",
     "pages/DongQu/D1/D11floor/Dong11f",
     "pages/Dian/D1-1L-1D/D1-1L-1D"
-   
+    
   ],
   "window": {
     "backgroundTextStyle": "light",

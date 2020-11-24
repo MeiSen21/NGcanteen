@@ -1,11 +1,15 @@
 //index.js
 //获取应用实例
+const DB = wx.cloud.database()
 const app = getApp()
+let local =""
+let openid=""
 
 Page({
   data: {
     imgurls:[
       {
+        
         imgurl:"../image/cai1.jpg",
         url:"",
         id:1
@@ -27,13 +31,72 @@ Page({
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo')
   },
+
+  cancel: function(){
+    local="bei"
+    this.setData({
+       hidden: true
+    });
+    console.log(local)
+    DB.collection("user").add({
+      data: {
+        openid:openid,
+        local: local
+      },
+      success(res) {
+        console.log("添加成功", res)
+
+      },
+      fail(res) {
+        console.log("添加失败", res)
+      }
+
+    })
+  },
+
+  confirm: function(){
+    local="dong"
+    this.setData({
+      hidden: true
+    }); 
+    console.log(local)
+    DB.collection("user").add({
+      data: {
+        openid:openid,
+        local: local
+      },
+      success(res) {
+        console.log("添加成功", res)
+
+      },
+      fail(res) {
+        console.log("添加失败", res)
+      }
+
+    })
+  },
   //事件处理函数
   bindViewTap: function() {
     wx.navigateTo({
       url: '../logs/logs'
     })
   },
-  onLoad: function () {
+  onLoad: function (options) {
+    wx.cloud.callFunction({
+      name:"getopenid",
+      success(res){
+      console.log("获取openid成功",res.result.openid)
+         openid=res.result.openid;
+         console.log(openid)
+      }, 
+      fail(res){
+        console.log("获取openid失败",res)
+           
+        },
+
+
+    })
+
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,

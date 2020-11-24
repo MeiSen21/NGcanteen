@@ -1,4 +1,9 @@
 <!--index.wxml-->
+<modal hidden="{{hidden}}" title="提示" confirm-text="东区" cancel-text="北区" bindcancel="cancel" bindconfirm="confirm" >
+选择你所在的区域
+</modal>
+
+
 <view class="container">
 
   <view class="userinfo">
