@@ -79,7 +79,7 @@ Page({
   },
   loadShow(fileUrl) {
     wx.cloud.uploadFile({
-      cloudPath: 'anbo.png',
+      cloudPath: Math.random()*50+'anbo.png',
       filePath: fileUrl, // 文件路径
       success: res => {
         // get resource ID
@@ -122,6 +122,11 @@ Page({
     })
     List.push(try1)
 
+    this.setData({
+      list:List
+
+    })
+
     DB.doc("judge1").update({
       data: {
         // _id:"judge1",
@@ -137,6 +142,24 @@ Page({
 
 
     })
+
+    let that=this
+    wx.cloud.database().collection("judgelist").get({
+      success(res){
+        console.log("请求成功",res)
+        that.setData({
+          list:res.data[0].list
+
+          
+        })
+        List=res.data[0].list
+      },
+      fail(res){
+        console.log("请求失败",res)
+      }
+    })
+
+
     // DB.add({
     //   data: {
     //     _id:"judge1",
@@ -154,10 +177,7 @@ Page({
 
     //定义局部变量push进全局变量,进行渲染
    
-    this.setData({
-      list:List
-
-    })
+   
    
   },
   onLoad: function (options) {
@@ -167,8 +187,10 @@ Page({
         console.log("请求成功",res)
         that.setData({
           list:res.data[0].list
+
           
         })
+        List=res.data[0].list
       },
       fail(res){
         console.log("请求失败",res)
