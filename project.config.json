@@ -1,8 +1,8 @@
 {
   "description": "项目配置文件",
-  "cloudfunctionRoot":"/cloud",
+  "cloudfunctionRoot": "cloud/",
   "packOptions": {
-    "ignore": []  
+    "ignore": []
   },
   "setting": {
     "urlCheck": false,
@@ -40,7 +40,7 @@
   },
   "compileType": "miniprogram",
   "libVersion": "2.14.0",
-  "appid": "wx44aae2821b2a9854",
+  "appid": "wxb12a9952cf63a0e6",
   "projectname": "study002",
   "debugOptions": {
     "hidedInDevtools": []

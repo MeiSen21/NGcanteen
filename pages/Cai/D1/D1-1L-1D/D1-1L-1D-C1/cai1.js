@@ -122,8 +122,9 @@ Page({
     })
     List.push(try1)
 
-    DB.add({
+    DB.doc("judge1").update({
       data: {
+        // _id:"judge1",
         list:List
       },
       success(res) {
@@ -134,7 +135,22 @@ Page({
         console.log("添加失败", res)
       }
 
+
     })
+    // DB.add({
+    //   data: {
+    //     _id:"judge1",
+    //     list:List
+    //   },
+    //   success(res) {
+    //     console.log("添加成功", res)
+
+    //   },
+    //   fail(res) {
+    //     console.log("添加失败", res)
+    //   }
+
+    // })
 
     //定义局部变量push进全局变量,进行渲染
    

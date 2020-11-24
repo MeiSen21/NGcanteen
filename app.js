@@ -3,7 +3,7 @@ App({
   onLaunch: function () {
 
     wx.cloud.init({
-      env:"test-s5jxa"
+      env:"haha38-8g44fh4lad30b0f0"
  
     })
     // 展示本地存储能力
