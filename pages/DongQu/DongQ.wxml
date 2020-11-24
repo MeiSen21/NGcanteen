@@ -1,20 +1,17 @@
 <!--pages/DongQu/DongQ.wxml-->
 
-<view class="container">
+<view class="container-First">
 
-  <navigator url="/pages/DongQu/D1/Dong1">
-  <view class="Dong D1">
-     <text>东一食堂</text>
-  </view>
- </navigator>
+<view class="Dong D1">
+  <navigator url="../Dian/D1-1L-1D/D1-1L-1D" class="nav">
+   <text>{{Firstfloor}}</text>
+  </navigator>
+</view>
 
-  <view class="Dong D2">
-    <text>东二食堂</text>
+<view class="Dong D2">
+<text>{{Secondfloor}}</text>
 
-  </view>
+</view>
 
-  <view class="Dong Dx">
-    <text>东小吃街</text>
 
-  </view>
 </view>

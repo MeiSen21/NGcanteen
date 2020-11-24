@@ -42,7 +42,12 @@ Page({
       score:'3.5'
 
     },
-    list:[]
+    list:[],
+    ChoiceArray:[
+      {name:'吃不吃',value:'还会一直吃',checked:'true'},
+      {name:'吃不吃',value:'还会偶尔吃'},
+      {name:'吃不吃',value:'再也不会吃'},
+    ]
    
 
     },

@@ -51,8 +51,21 @@
 
 <view class="comment-areahide {{Type?'comment-areashow': ''}} ">
   <view class="comment-sum">
-    <image src="{{imageUrl}}" class="comment-text photo" bindload="addImage"></image>
+    <view class="comment-sum-left">
+      <image src="{{imageUrl}}" class="comment-text photo" bindload="addImage"></image>
+    </view>
+
+    <view class="comment-sum-right">
+
     <textarea placeholder="请吐槽把！" class="comment-text" id="c-text" bindinput="tucao"></textarea>
+
+       <radio-group bindchange="" class="radio-group">
+         <label wx:for-items="{{ChoiceArray}}">
+           <radio value="{{item.name}}" checked="{{item.checked}}" >{{item.value}}</radio>
+         </label>
+       </radio-group>
+
+    </view>
   </view>
 
   <view>

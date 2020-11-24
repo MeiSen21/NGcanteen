@@ -4,6 +4,9 @@ const app = getApp()
 
 Page({
   data: {
+    currentIndex:0,
+    Firstfloor:'东一一楼',
+    Secondfloor:'东二二楼',
     imgurls:[
       {
         imgurl:"../image/cai1.jpg",
@@ -33,6 +36,46 @@ Page({
       url: '../logs/logs'
     })
   },
+  //导航切换函数
+  switchNav:function(e){
+    var id=e.target.id;
+    if (this.data.currentIndex==id) {
+      return false;
+    }else{
+      if (id==0) {
+        // 目前这个id只传递了一层关系 >食堂楼层 没法继续按这个id索引店铺和食物和评价关系
+        // 参考这个思路 写出一个完整的传递关系 和依赖变量 
+        // 赋值数据从数据库中调用
+        this.setData({
+          currentIndex:id,
+          Firstfloor:'东一一楼',
+          Secondfloor:'东一二楼'
+        });
+      }else if (id==1) {
+        this.setData({
+          currentIndex:id,
+          Firstfloor:'东二一楼',
+          Secondfloor:'东二二楼'
+        });
+      }else if (id==2) {
+        this.setData({
+          currentIndex:id,
+          Firstfloor:'北一一楼',
+          Secondfloor:'北一二楼'
+        });
+      }else if (id==3) {
+        this.setData({
+          currentIndex:id,
+          Firstfloor:'北二一楼',
+          Secondfloor:'北二二楼'
+        });
+      }
+      
+      console.log(this.data.currentIndex);
+    }
+
+  },
+
   onLoad: function () {
     if (app.globalData.userInfo) {
       this.setData({

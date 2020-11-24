@@ -1,23 +1,52 @@
 <!--index.wxml-->
 <view class="container">
 
-  <view class="userinfo">
-    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-    <block wx:else>
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-    </block>
-  </view>
+  <scroll-view class="scroll-view" scroll-x="true">
+    <view class="scroll-view">
+      
+        <view class="normal {{currentIndex==0?'select':''}}" bindtap="switchNav" id="0">东一</view>
 
-<swiper indicator-dots="true" autoplay="true" interval="2000" duration="500" class="LunBo1">
+        <view class="normal {{currentIndex==1?'select':''}}" bindtap="switchNav" id="1">东二</view>
+        
+        <view class="normal {{currentIndex==2?'select':''}}" bindtap="switchNav" id="2">北一</view>
+   
+        <view class="normal {{currentIndex==3?'select':''}}" bindtap="switchNav" id="3">北二</view>
+      
+    </view>
+  </scroll-view>
+
+  <swiper class="swiper" current="{{currentIndex}}">
+    <swiper-item>
+      <include src="../DongQu/DongQ"></include>
+    </swiper-item>
+
+    <swiper-item>
+      <include src="../DongQu/DongQ"></include>    
+    </swiper-item>
+
+    <swiper-item>
+      <include src="../DongQu/DongQ"></include>
+    </swiper-item>
+
+    <swiper-item>
+      <include src="../DongQu/DongQ"></include>
+    </swiper-item>
+
+  </swiper>
+
+
+
+
+
+<!-- <swiper indicator-dots="true" autoplay="true" interval="2000" duration="500" class="LunBo1">
    <block wx:for="{{imgurls}}" wx:key="{{item.id}}">
            <swiper-item data-utl="{{item.url}}"  bindtap="ChangeUrl">
               <image src="{{item.imgurl}}" mode="aspectFill"></image>
            </swiper-item>
     </block>
-</swiper>
+</swiper> -->
 
-<view class="WaiKuang">
+<!-- <view class="WaiKuang">
 
 <navigator url="/pages/DongQu/DongQ">
   <view class="NeiKuang NeiD" >
@@ -33,5 +62,5 @@
 
   <view class="usermotto">
     <text class="user-motto">{{motto}}</text>
-  </view>
+  </view> -->
 </view>
