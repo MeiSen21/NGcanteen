@@ -1,26 +1,28 @@
 /* pages/DongQu/DongQ.wxss */
-.container{
+.container-First{
   display: flex;
-  flex-direction: column;
-  width: 750rpx;
-  height: 1000rpx;
-  border: 2px solid green;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  height: 100%;
 }
 .Dong{
+  width: 30%;
+  height: 70%;
+  border: 1px solid red;
+
+}
+.nav{
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 750rpx;
-  height: 550rpx;
-  border: 1px solid red;
-
+  width: 100%;
+  height: 100%;
 }
 .D1{
   background-color: green;
 }
 .D2{
   background-color: red;
-}
-.Dx{
-  background-color: burlywood;
 }

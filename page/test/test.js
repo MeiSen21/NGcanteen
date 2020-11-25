@@ -1,4 +1,4 @@
-// pages/DongQu/D1/Dong1.js
+// page/test/test.js
 Page({
 
   /**
