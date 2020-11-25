@@ -3,7 +3,7 @@
 <view class="container-First">
 
 <view class="Dong D1">
-  <navigator url="../Dian/D1-1L-1D/D1-1L-1D" class="nav">
+  <navigator url="../Restaurnt/Restaurnt" class="nav">
    <text>{{Firstfloor}}</text>
   </navigator>
 </view>

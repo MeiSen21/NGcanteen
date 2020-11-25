@@ -1,4 +1,7 @@
 /* pages/Cai/D1/D1-1L-1D/D1-1L-1D-C1/cai1.wxss */
+.container{
+  background-color: #1D6A96;
+}
 .radio-group{
   color: black;
 }
@@ -37,9 +40,12 @@
 .listitem{
   display: flex;
   flex-direction: row;
-  width: 750rpx;
+  width: 720rpx;
   height: 300rpx;
-  border: 1px solid red;
+  background-color: #85b8cb;
+  border: 3px solid #283b42;
+  border-radius: 30rpx;
+  margin-top: 30rpx;
 }
 .panel-image{
 display: flex;
@@ -51,12 +57,13 @@ height: 300rpx;
 .imageitem{
 width: 200rpx;
 height: 200rpx;
+border-radius: 30rpx;
 }
 .panel-right{
 display: flex;
 flex-direction: column;
 margin-left: 30rpx;
-margin-top: 30rpx;
+margin-top: 10rpx;
 width: 500rpx;
 height: 300rpx;
 }

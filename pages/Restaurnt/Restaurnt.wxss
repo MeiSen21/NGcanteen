@@ -1,4 +1,4 @@
-/* pages/Dian/D1-1L-1D/D1-1L-1D.wxss */
+/* pages/Restaurnt/Restaurnt.wxss */
 .container{
   background-color: #9BCFBB;
 }

@@ -4,7 +4,7 @@ let local="东区"
 let year="大一"
 let nickname=""
 let head_icon=""
-let openid=""
+let openid="oZBsQ5Ks3QJUepqqKvMpSlK8unBo"
 const app = getApp()
 Page({
 
@@ -55,7 +55,7 @@ Page({
       data: {
         nickname:nickname,
         head_icon: head_icon,
-        openid:openid,
+        _id:openid,
         local: local,
         year: year,
         
@@ -82,7 +82,7 @@ Page({
         console.log("获取openid成功", res.result.openid)
         openid = res.result.openid;
         
-        console.log(openid)
+        // console.log(openid)
       },
       fail(res) {
         console.log("获取openid失败", res)
@@ -93,9 +93,8 @@ Page({
     })
 
     let that = this
-    wx.cloud.database().collection("user").where({
-      _openid: openid ,
-    }).get({
+    console.log(openid)
+    wx.cloud.database().collection('user').doc('openid').get({
       success(res) {
         console.log("已存在该用户", res)
         wx.switchTab({

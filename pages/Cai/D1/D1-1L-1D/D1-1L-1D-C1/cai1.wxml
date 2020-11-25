@@ -1,7 +1,7 @@
 <!--pages/Cai/D1/D1-1L-1D/D1-1L-1D-C1/cai1.wxml-->
 <view class="container">
    
-  <view class="listitem">
+  <view class="listitem GF">
    
    <view class="panel-image">
      <image src="{{guanp.src}}" class="imageitem"></image>
