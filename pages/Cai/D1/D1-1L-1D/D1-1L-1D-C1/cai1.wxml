@@ -21,7 +21,8 @@
 
 
   <block wx:for-items="{{list}}" wx:key="{{item.id}}">
-    <navigator url="{{item.url}}">
+    <!-- style="order:{{item.Weight}}"权重加到云端后就可以把这个放到navigator组件中 -->
+    <navigator url="{{item.url}}" >
     <view class="listitem">
    
         <view class="panel-image">
@@ -31,6 +32,7 @@
         <view class="panel-right">
           <view class="panel-text">{{item.text}}</view>
           <view class="ShuiYin">
+            <!-- 让后把这边的score改成item. -->
             <view>{{item.time}}</view>  <view>{{item.score}}</view>          
           </view>
         </view>        
@@ -59,9 +61,9 @@
 
     <textarea placeholder="请吐槽把！" class="comment-text" id="c-text" bindinput="tucao"></textarea>
 
-       <radio-group bindchange="" class="radio-group">
+       <radio-group bindchange="radiochange" class="radio-group">
          <label wx:for-items="{{ChoiceArray}}">
-           <radio value="{{item.name}}" checked="{{item.checked}}" >{{item.value}}</radio>
+           <radio value="{{item.name}}" checked="{{item.checked}}" weight="{{Weight}}">{{item.value}}</radio>
          </label>
        </radio-group>
 

@@ -1,12 +1,12 @@
 {
   "pages": [
-   
+    
     "pages/index/index",
+    "pages/Cai/D1/D1-1L-1D/D1-1L-1D-C1/cai1",
     "pages/try/try",
     "pages/logs/logs",
     "pages/DongQu/DongQ",
-    "pages/Dian/D1-1L-1D/D1-1L-1D",
-    "pages/Cai/D1/D1-1L-1D/D1-1L-1D-C1/cai1"
+    "pages/Dian/D1-1L-1D/D1-1L-1D"
   ],
   "window": {
     "backgroundTextStyle": "light",

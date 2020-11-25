@@ -35,6 +35,12 @@ Page({
   data: {
     imageUrl: "",
     Type:false,
+    // Weight是评价对应的权重 Comment是对应评价位置先放在这里 但后续肯定要换地方
+    // 放到云端里和每个数据对象绑在一起 
+    Weight:4,
+    Comment:'',
+
+
     guanp:{
       src:'',
       text:'官方认为这个菜勉强可以吃，肥牛的味道是好是坏',
@@ -44,11 +50,37 @@ Page({
     },
     list:[],
     ChoiceArray:[
-      {name:'吃不吃',value:'还会一直吃',checked:'true'},
-      {name:'吃不吃',value:'还会偶尔吃'},
-      {name:'吃不吃',value:'再也不会吃'},
+      {name:'一直吃',value:'还会一直吃',checked:'true',weight:1},
+      {name:'偶尔吃',value:'还会偶尔吃',weight:2},
+      {name:'不吃',value:'再也不会吃',weight:3},
     ]
    
+
+    },
+    // 获取单选框按钮状态 并且设置对应权重
+    // 权重越低 排序越优先
+    radiochange:function(e){
+    var usevalue=e.detail.value;
+    var Weight,Comment;
+    if (usevalue.indexOf("一直")==0) {
+      Weight=1;
+      Comment='还会一直吃';
+
+    }else if(usevalue.indexOf("偶尔")==0){
+      Weight=2;
+      Comment='还会偶尔吃';
+
+    }else if(usevalue.indexOf("不")==0){
+      Weight=3;
+      Comment='再也不会吃';
+
+    }
+    console.log(usevalue);
+    console.log(Weight);
+    this.setData({
+      Weight:Weight,
+      Comment:Comment
+    })
 
     },
 //评论按钮的显示/隐藏
