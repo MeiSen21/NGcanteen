@@ -8,7 +8,8 @@ let try1={
   src:"",
   text:"添加评价1",
   time: util.formatTime(new Date()),
-  score:'9'
+  score:'9',
+  weight:""
 
 }
 
@@ -61,26 +62,26 @@ Page({
     // 权重越低 排序越优先
     radiochange:function(e){
     var usevalue=e.detail.value;
-    var Weight,Comment;
+    // var Weight,Comment;
     if (usevalue.indexOf("一直")==0) {
-      Weight=1;
-      Comment='还会一直吃';
+      try1.weight=1;
+      try1.score='还会一直吃';
 
     }else if(usevalue.indexOf("偶尔")==0){
-      Weight=2;
-      Comment='还会偶尔吃';
+      try1.weight=2;
+      try1.score='还会偶尔吃';
 
     }else if(usevalue.indexOf("不")==0){
-      Weight=3;
-      Comment='再也不会吃';
+      try1.weight=3;
+      try1.score='再也不会吃';
 
     }
     console.log(usevalue);
     console.log(Weight);
-    this.setData({
-      Weight:Weight,
-      Comment:Comment
-    })
+    // this.setData({
+    //   Weight:Weight,
+    //   Comment:Comment
+    // })
 
     },
 //评论按钮的显示/隐藏
@@ -143,20 +144,7 @@ Page({
   submitcom:function(){
 
     
-    wx.cloud.callFunction({
-      name:"getopenid",
-      success(res){
-      console.log("获取openid成功",res.result.openid)
-         try1.id=res.result.openid;
-      console.log("获取openid成功",try1.id)
-      }, 
-      fail(res){
-        console.log("获取openid失败",res)
-           
-        },
-
-
-    })
+   
     List.push(try1)
 
     this.setData({
@@ -218,6 +206,21 @@ Page({
    
   },
   onLoad: function (options) {
+
+    wx.cloud.callFunction({
+      name:"getopenid",
+      success(res){
+      console.log("获取openid成功",res.result.openid)
+         try1.id=res.result.openid;
+      console.log("获取openid成功",try1.id)
+      }, 
+      fail(res){
+        console.log("获取openid失败",res)
+           
+        },
+
+
+    })
     let that=this
     wx.cloud.database().collection("judgelist").get({
       success(res){

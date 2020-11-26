@@ -70,6 +70,9 @@ Page({
       }
 
     })
+    wx.switchTab({
+      url: '../index/index'
+    })
 
   },
   /**
@@ -92,17 +95,23 @@ Page({
 
     })
 
-    let that = this
+    
     console.log(openid)
-    wx.cloud.database().collection('user').doc('openid').get({
+    DB.collection('user').add({
+
+      data: {
+
+        _id:openid,
+      },
       success(res) {
+        console.log("可登记", res)
+        
+      },
+      fail(res) {
         console.log("已存在该用户", res)
         wx.switchTab({
           url: '../index/index'
         })
-      },
-      fail(res) {
-        console.log("可登记", res)
       }
     })
 
