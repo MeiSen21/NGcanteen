@@ -171,7 +171,8 @@ Page({
     let that=this
     wx.cloud.database().collection("judgelist").get({
       success(res){
-        console.log("请求成功",res)
+        console.log("请求成功",res);
+        
         that.setData({
           list:res.data[0].list
 
@@ -225,6 +226,7 @@ Page({
     wx.cloud.database().collection("judgelist").get({
       success(res){
         console.log("请求成功",res)
+        console.log("请求55454",res.data[0].list);
         that.setData({
           list:res.data[0].list
 
