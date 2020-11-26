@@ -1,38 +1,26 @@
 // pages/Cai/D1/D1-1L-1D/D1-1L-1D-C1/cai1.js
-const DB = wx.cloud.database().collection("judgelist")
+const DB = wx.cloud.database().collection("RealList")
 var util = require('../../../../../utils/util.js');
-
-
 let try1={
-  id:"",
+  Fid:11,
+  Jid:11101001,
+  Rid:111,
+  Tid:11101,
   src:"",
-  text:"添加评价1",
-  time: util.formatTime(new Date()),
-  score:'9'
+  Ttext:"添加评价1",
+  Time: util.formatTime(new Date()),
+  Tcomment:'不会再吃了',
+  Tweight:3
 
 }
-
-let List=[
-  // {
-  //   id:"d1",
-  //   src:"",
-  //   text:"全局评价1",
-  //   time:'2020-11-21',
-  //   score:'2'
-  // },{
-  //   id:"d2",
-  //   src:"",
-  //   text:"全局评价2",
-  //   time:'2012-3-4',
-  //   score:'4'
-  // }
-]
+let List=[]
 Page({
-
   /**
    * 页面的初始数据
    */
   data: {
+    Jlist:[],
+    Tid:11101,
     imageUrl: "",
     Type:false,
     // Weight是评价对应的权重 Comment是对应评价位置先放在这里 但后续肯定要换地方
@@ -48,39 +36,35 @@ Page({
       score:'3.5'
 
     },
-    list:[],
     ChoiceArray:[
       {name:'一直吃',value:'还会一直吃',checked:'true',weight:1},
       {name:'偶尔吃',value:'还会偶尔吃',weight:2},
       {name:'不吃',value:'再也不会吃',weight:3},
     ]
-   
-
     },
     // 获取单选框按钮状态 并且设置对应权重
     // 权重越低 排序越优先
     radiochange:function(e){
     var usevalue=e.detail.value;
-    var Weight,Comment;
+    // var Weight,Comment;
     if (usevalue.indexOf("一直")==0) {
-      Weight=1;
-      Comment='还会一直吃';
+      try1.Tweight=1;
+      try1.Tcomment='还会一直吃';
 
     }else if(usevalue.indexOf("偶尔")==0){
-      Weight=2;
-      Comment='还会偶尔吃';
+      try1.Tweight=2;
+      try1.Tcomment='还会偶尔吃';
 
     }else if(usevalue.indexOf("不")==0){
-      Weight=3;
-      Comment='再也不会吃';
+      try1.Tweight=3;
+      try1.Tcomment='再也不会吃';
 
     }
     console.log(usevalue);
-    console.log(Weight);
-    this.setData({
-      Weight:Weight,
-      Comment:Comment
-    })
+    // this.setData({
+    //   Weight:Weight,
+    //   Comment:Comment
+    // })
 
     },
 //评论按钮的显示/隐藏
@@ -135,39 +119,27 @@ Page({
   },
   tucao(event) { 
   
-    try1.text = event.detail.value
-    console.log(try1.text )
+    try1.Ttext = event.detail.value
+    console.log(try1.Ttext )
     
   },
 
   submitcom:function(){
-
-    
-    wx.cloud.callFunction({
-      name:"getopenid",
-      success(res){
-      console.log("获取openid成功",res.result.openid)
-         try1.id=res.result.openid;
-      console.log("获取openid成功",try1.id)
-      }, 
-      fail(res){
-        console.log("获取openid失败",res)
-           
-        },
-
-
-    })
-    List.push(try1)
-
+    console.log('添加数据之前的List数组',List);
+    console.log('添加数据时的try1对象',try1);
+    List.push(try1);
+    console.log('添加数据过后的List数组',List);
+    var x='Jlist'+this.data.Tid;
+    console.log('组合更新的数组id=',x);
     this.setData({
-      list:List
-
+      Jlist:List
     })
-
-    DB.doc("judge1").update({
+    DB.where({
+      _id:'fc5ac5c95fbe6492003e26000c131429'
+    }).update({
       data: {
         // _id:"judge1",
-        list:List
+        Jlist11101:List
       },
       success(res) {
         console.log("添加成功", res)
@@ -176,20 +148,25 @@ Page({
       fail(res) {
         console.log("添加失败", res)
       }
-
-
     })
-
     let that=this
-    wx.cloud.database().collection("judgelist").get({
+    wx.cloud.database().collection("RealList").where({
+      _id:'fc5ac5c95fbe6492003e26000c131429'
+    }).get({
       success(res){
         console.log("请求成功",res)
-        that.setData({
-          list:res.data[0].list
-
-          
-        })
-        List=res.data[0].list
+        var Jlist=res.data[0];
+          console.log("请求Jlist",Jlist);
+          for(let i in Jlist){
+            if (i.indexOf(that.data.Tid)!=-1) {
+              console.log(Jlist[i]);
+              List=Jlist[i];
+              that.setData({
+                Jlist:Jlist[i]
+              })
+              console.log('二次检验:',that.data.Jlist);
+            }
+          }
       },
       fail(res){
         console.log("请求失败",res)
@@ -214,20 +191,50 @@ Page({
 
     //定义局部变量push进全局变量,进行渲染
    
-   
-   
   },
-  onLoad: function (options) {
-    let that=this
-    wx.cloud.database().collection("judgelist").get({
-      success(res){
-        console.log("请求成功",res)
-        that.setData({
-          list:res.data[0].list
 
-          
-        })
-        List=res.data[0].list
+  onLoad: function (options) {
+    //拿去上级页面传递的Tid
+    let that=this;
+    console.log("让我们看看Tid="+options.Tid);
+    that.setData({
+      Tid:options.Tid
+    })
+    // this.getTlist(that.data.Rid);
+
+    //拿去用户id为特异性排序做准备
+    wx.cloud.callFunction({
+      name:"getopenid",
+      success(res){
+      console.log("获取openid成功",res.result.openid)
+         try1.id=res.result.openid;
+      console.log("获取openid成功",try1.id)
+      }, 
+      fail(res){
+        console.log("获取openid失败",res)
+           
+        },
+
+
+    })
+    //加载请求数据库并拉到本地
+    wx.cloud.database().collection("RealList").where({
+      _id:'fc5ac5c95fbe6492003e26000c131429'
+    }).get({
+      success(res){
+        console.log("Jlist请求成功",res)
+        var Jlist=res.data[0];
+          console.log("请求Jlist",Jlist);
+          for(let i in Jlist){
+            if (i.indexOf(that.data.Tid)!=-1) {
+              console.log(Jlist[i]);
+              List=Jlist[i];
+              that.setData({
+                Jlist:Jlist[i]
+              })
+              console.log('二次检验:',that.data.Jlist);
+            }
+          }
       },
       fail(res){
         console.log("请求失败",res)
@@ -235,6 +242,7 @@ Page({
     })
 
   },
+
 
 
 })

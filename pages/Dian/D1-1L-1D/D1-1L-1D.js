@@ -1,51 +1,26 @@
 // pages/Dian/D1-1L-1D/D1-1L-1D.js
+const DB = wx.cloud.database()
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    list:[
-      {
-        id:"d1",
-        url:"/pages/Cai/D1/D1-1L-1D/D1-1L-1D-C1/cai1",
-        src:"../../image/imgD1-1L-1D/D1-1L-1D-1C.jpg",
-        score:4,
-        title:"干锅毛肚",
-        text:"毛肚极其少 但贼好吃"
-      },
-      {
-        id:"d2",
-        url:"",
-        src:"../../image/imgD1-1L-1D/imgD1-1L-1D-2C.jfif",
-        score:4.5,
-        title:"干锅大虾",
-        text:"全是菜 虾子一点点大"
-      },
-      {
-        id:"d3",
-        url:"",
-        src:"../../image/imgD1-1L-1D/D1-1L-1D-3C.jfif",
-        score:4.7,
-        title:"干锅鸡",
-        text:"有点东西的，有点香的"
-      },
-      {
-        id:"d4",
-        url:"",
-        src:"",
-        score:4,
-        title:"",
-        text:""
-      }
-    ]
-
+    Rid:111,
+    Tlist:[],
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var that=this;
+    console.log("让我们看看Rid="+options.Rid);
+    that.setData({
+      Rid:options.Rid
+    })
+    this.getTlist(that.data.Rid);
 
   },
 
@@ -96,5 +71,30 @@ Page({
    */
   onShareAppMessage: function () {
 
-  }
+  },
+    // Tlist表单请求模块
+    getTlist:function(mark){
+      let that=this;
+      DB.collection("RealList").where({
+        _id:'fc5ac5c95fbe61a3003dfa61028cdd9c'
+      }).get({
+        success(res){
+          console.log("Tlist库请求成功",res);
+          var Tlist=res.data[0];
+          console.log("请求Tlist",Tlist);
+          for(let i in Tlist){
+            if (i.indexOf(mark)!=-1) {
+              console.log(Tlist[i]);
+              that.setData({
+                Tlist:Tlist[i]
+              })
+              console.log('二次检验:',that.data.Tlist);
+            }
+          }
+        },
+        fail(res){
+          console.log("Tlist库请求失败",res)
+        }
+      })
+    }
 })

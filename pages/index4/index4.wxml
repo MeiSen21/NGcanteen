@@ -1,0 +1,43 @@
+<!--index.wxml-->
+
+<view class="container">
+  <view class="userinfo">
+    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+    <block wx:else>
+      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+    </block>
+  </view>
+  <view class="usermotto">
+    <text class="user-motto">{{motto}}</text>
+  </view>
+</view>
+<view class='page'>
+  <form bindsubmit='formSubmit' bindreset='formReset' report-submit='true'>
+    
+
+      <view>
+          <text>区域：</text>
+        </view>
+      <radio-group bindchange="radiochange1" class="radio-group">
+         <label wx:for-items="{{ChoiceArray2}}">
+           <radio value="{{item.name}}" checked="{{item.checked}}" weight="{{Weight}}">{{item.value}}</radio>
+         </label>
+       </radio-group>
+
+
+      <view>
+          <text>年级：</text>
+        </view>
+      <radio-group bindchange="radiochange2" class="radio-group">
+         <label wx:for-items="{{ChoiceArray}}">
+           <radio value="{{item.name}}" checked="{{item.checked}}" weight="{{Weight}}">{{item.value}}</radio>
+         </label>
+       </radio-group>
+
+      <view class='btn'>
+        <button form-type='submit' type='primary'>登记</button>
+        <button form-type='reset'>清空</button>
+      </view>
+  </form>
+</view>
