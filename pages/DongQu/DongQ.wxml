@@ -2,13 +2,13 @@
 
 <view class="container-First">
 
-<view class="Dong D1">
+<view class="Dong D1" >
   <navigator url="../Restaurnt/Restaurnt" class="nav">
    <text>{{Firstfloor}}</text>
   </navigator>
 </view>
 
-<view class="Dong D2">
+<view class="Dong D2" bindtap="Jump2">
 <text>{{Secondfloor}}</text>
 
 </view>

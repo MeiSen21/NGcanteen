@@ -20,9 +20,9 @@
 
 
 
-  <block wx:for-items="{{list}}" wx:key="{{item.id}}">
+  <block wx:for-items="{{Jlist}}" wx:key="{{item.Jid}}">
     <!-- style="order:{{item.Weight}}"权重加到云端后就可以把这个放到navigator组件中 -->
-    <navigator url="{{item.url}}" >
+    <navigator url="" >
     <view class="listitem">
    
         <view class="panel-image">
@@ -30,10 +30,10 @@
         </view>
 
         <view class="panel-right">
-          <view class="panel-text">{{item.text}}</view>
+          <view class="panel-text">{{item.Ttext}}</view>
           <view class="ShuiYin">
             <!-- 让后把这边的score改成item. -->
-            <view>{{item.time}}</view>  <view>{{item.score}}</view>          
+            <view>{{item.Time}}</view>  <view>{{item.Tcomment}}</view>          
           </view>
         </view>        
       

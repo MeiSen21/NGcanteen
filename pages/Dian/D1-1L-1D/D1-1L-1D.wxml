@@ -1,7 +1,7 @@
 <!--pages/Dian/D1-1L-1D/D1-1L-1D.wxml-->
 <view class="container">
-  <block wx:for-items="{{list}}" wx:key="{{item.id}}">
-    <navigator url="{{item.url}}">
+  <block wx:for-items="{{Tlist}}" wx:key="{{item.Tid}}">
+    <navigator url="/pages/Cai/D1/D1-1L-1D/D1-1L-1D-C1/cai1?Tid={{item.Tid}}">
     <view class="listitem">
    
         <view class="panel-image">
@@ -10,10 +10,10 @@
 
         <view class="panel-right">
           <view class="panel-title">
-            <view>{{item.title}}</view>
-            <view>评分：{{item.score}} </view>        
+            <view>{{item.Tname}}</view>
+            <view>{{item.Tcomment}} </view>        
           </view>
-          <view class="panel-text">{{item.text}}</view>
+          <view class="panel-text">{{item.Ttext}}</view>
         </view>        
       
     </view>

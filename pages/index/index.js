@@ -1,6 +1,7 @@
 //index.js
 //获取应用实例
 const DB = wx.cloud.database()
+const _ = DB.command
 const app = getApp()
 let local =""
 let openid=""
@@ -8,8 +9,13 @@ let openid=""
 Page({
   data: {
     currentIndex:0,
+    Clist:[
+
+    ],
     Firstfloor:'东一一楼',
     Secondfloor:'东二二楼',
+    Fid1:11,
+    Fid2:12,
     imgurls:[
       {
         
@@ -84,39 +90,20 @@ Page({
       url: '../logs/logs'
     })
   },
-  //导航切换函数
+  //导航切换函数 数据实时从数据库拉取
   switchNav:function(e){
     var id=e.target.id;
     if (this.data.currentIndex==id) {
       return false;
     }else{
       if (id==0) {
-        // 目前这个id只传递了一层关系 >食堂楼层 没法继续按这个id索引店铺和食物和评价关系
-        // 参考这个思路 写出一个完整的传递关系 和依赖变量 
-        // 赋值数据从数据库中调用
-        this.setData({
-          currentIndex:id,
-          Firstfloor:'东一一楼',
-          Secondfloor:'东一二楼'
-        });
+        this.getClist(0);
       }else if (id==1) {
-        this.setData({
-          currentIndex:id,
-          Firstfloor:'东二一楼',
-          Secondfloor:'东二二楼'
-        });
+        this.getClist(1);
       }else if (id==2) {
-        this.setData({
-          currentIndex:id,
-          Firstfloor:'北一一楼',
-          Secondfloor:'北一二楼'
-        });
+        this.getClist(2);
       }else if (id==3) {
-        this.setData({
-          currentIndex:id,
-          Firstfloor:'北二一楼',
-          Secondfloor:'北二二楼'
-        });
+        this.getClist(3);
       }
       
       console.log(this.data.currentIndex);
@@ -125,6 +112,8 @@ Page({
   },
 
   onLoad: function () {
+    this.getClist();
+
     wx.cloud.callFunction({
       name:"getopenid",
       success(res){
@@ -171,5 +160,43 @@ Page({
       userInfo: e.detail.userInfo,
       hasUserInfo: true
     })
+  },
+// Clist表单请求模块
+  getClist:function(mark){
+    mark++;
+    let that=this;
+    DB.collection("RealList").where({
+      _id:'fc5ac5c95fbe59f8003df452635e58dd'
+    }).get({
+      success(res){
+        console.log("Clist库请求成功",res);
+        var Clist1=res.data[0];
+        console.log("请求Clist1",Clist1);
+        for(let i in Clist1){
+          if (i.indexOf(mark)!=-1) {
+            console.log(Clist1[i]);
+            that.setData({
+              currentIndex:mark-1,
+              Firstfloor:Clist1[i][0].Fname,
+              Fid1:Clist1[i][0].Fid,
+              Secondfloor:Clist1[i][1].Fname,
+              Fid2:Clist1[i][1].Fid
+            })
+          }
+        }
+      },
+      fail(res){
+        console.log("Clist库请求失败",res)
+      }
+    })
+  },
+  Jump2:function () {
+    wx.navigateTo({
+      url: '../Restaurnt/Restaurnt?Fid='+this.data.Fid1,
+    })
   }
+
+  
+
+
 })

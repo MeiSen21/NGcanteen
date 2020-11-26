@@ -70,6 +70,9 @@ Page({
       }
 
     })
+    wx.switchTab({
+      url: '../index/index'
+    })
 
   },
   /**
