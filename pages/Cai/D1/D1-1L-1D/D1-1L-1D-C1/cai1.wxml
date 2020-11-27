@@ -30,10 +30,10 @@
         </view>
 
         <view class="panel-right">
-          <view class="panel-text">{{item.Ttext}}</view>
+          <view class="panel-text">{{item.Jtext}}</view>
           <view class="ShuiYin">
             <!-- 让后把这边的score改成item. -->
-            <view>{{item.Time}}</view>  <view>{{item.Tcomment}}</view>          
+            <view>{{item.Time}}</view>  <view>{{item.Jcomment}}</view>          
           </view>
         </view>        
       

@@ -76,7 +76,7 @@ Page({
     getTlist:function(mark){
       let that=this;
       DB.collection("RealList").where({
-        _id:'fc5ac5c95fbe61a3003dfa61028cdd9c'
+        _id:'typed1d2'
       }).get({
         success(res){
           console.log("Tlist库请求成功",res);

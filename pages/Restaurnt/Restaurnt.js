@@ -77,17 +77,18 @@ Page({
   getFlist:function(mark){
     let that=this;
     DB.collection("RealList").where({
-      _id:'b3a8af275fbe6116001d2b4a4ed6eb3c'
+      _id:'floor1112'
     }).get({
       success(res){
         console.log("Flist库请求成功",res);
-        var Flist11=res.data[0];
-        console.log("请求Flist11",Flist11);
-        for(let i in Flist11){
+        var Flist=res.data[0];
+        console.log("请求Flist",Flist);
+        console.log('mark=',mark);
+        for(let i in Flist){
           if (i.indexOf(mark)!=-1) {
-            console.log(Flist11[i]);
+            console.log(Flist[i]);
             that.setData({
-              Flist:Flist11[i]
+              Flist:Flist[i]
             })
             console.log('二次检验:',that.data.Flist);
           }

@@ -192,7 +192,7 @@ Page({
   },
   Jump2:function () {
     wx.navigateTo({
-      url: '../Restaurnt/Restaurnt?Fid='+this.data.Fid1,
+      url: '../Restaurnt/Restaurnt?Fid='+this.data.Fid2,
     })
   }
 

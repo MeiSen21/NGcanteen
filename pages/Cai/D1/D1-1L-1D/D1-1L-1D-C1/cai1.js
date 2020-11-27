@@ -1,18 +1,20 @@
 // pages/Cai/D1/D1-1L-1D/D1-1L-1D-C1/cai1.js
 const DB = wx.cloud.database().collection("RealList")
 var util = require('../../../../../utils/util.js');
+// try数组用来存放每次新增的评论后续通过push到数组中
 let try1={
   Fid:11,
   Jid:11101001,
   Rid:111,
   Tid:11101,
   src:"",
-  Ttext:"添加评价1",
+  Jtext:"添加评价1",
   Time: util.formatTime(new Date()),
-  Tcomment:'不会再吃了',
-  Tweight:3
+  Jcomment:'不会再吃了',
+  Jweight:3
 
 }
+// 作为中间缓冲数组 用来存放中转数据
 let List=[]
 Page({
   /**
@@ -36,6 +38,7 @@ Page({
       score:'3.5'
 
     },
+    // 用来存放评论模块中radio相关数据
     ChoiceArray:[
       {name:'一直吃',value:'还会一直吃',checked:'true',weight:1},
       {name:'偶尔吃',value:'还会偶尔吃',weight:2},
@@ -46,39 +49,33 @@ Page({
     // 权重越低 排序越优先
     radiochange:function(e){
     var usevalue=e.detail.value;
+    console.log('评论界面-按钮value=',usevalue)
     // var Weight,Comment;
     if (usevalue.indexOf("一直")==0) {
-      try1.Tweight=1;
-      try1.Tcomment='还会一直吃';
-
+      try1.Jweight=1;
+      try1.Jcomment='还会一直吃';
+      // 根据按钮为评论数组中特定属性赋值
     }else if(usevalue.indexOf("偶尔")==0){
-      try1.Tweight=2;
-      try1.Tcomment='还会偶尔吃';
+      try1.Jweight=2;
+      try1.Jcomment='还会偶尔吃';
 
     }else if(usevalue.indexOf("不")==0){
-      try1.Tweight=3;
-      try1.Tcomment='再也不会吃';
+      try1.Jweight=3;
+      try1.Jcomment='再也不会吃';
 
     }
-    console.log(usevalue);
-    // this.setData({
-    //   Weight:Weight,
-    //   Comment:Comment
-    // })
 
     },
 //评论按钮的显示/隐藏
     OpenType: function(){
       console.log(this.data.Type)
       if (this.data.Type==false) {
-        console.log('show')
-
+        console.log('评论界面show')
         this.setData({
           Type:true
         })
       }else{
-        console.log('hide')
-
+        console.log('评论界面hide')
         this.setData({
           Type:false
         })
@@ -104,38 +101,40 @@ Page({
       filePath: fileUrl, // 文件路径
       success: res => {
         // get resource ID
-        console.log("上传成功", res)
+        console.log("图片上传成功", res)
         try1.src = res.fileID
         this.setData({
-          imageUrl: res.fileID,
-          
-        })
-        
+          imageUrl: res.fileID,        
+        })       
       },
       fail: err => {
         // handle error
       }
     })
   },
+  // ？？？
   tucao(event) { 
-  
-    try1.Ttext = event.detail.value
+    try1.Jtext = event.detail.value
     console.log(try1.Ttext )
-    
   },
 
+  // 提交按钮出发函数
   submitcom:function(){
-    console.log('添加数据之前的List数组',List);
-    console.log('添加数据时的try1对象',try1);
+    let that=this
+    console.log('提交之后，添加数据之前的List数组',List);
+    console.log('提交之后，添加数据时的try1对象',try1);
     List.push(try1);
-    console.log('添加数据过后的List数组',List);
-    var x='Jlist'+this.data.Tid;
+    that.data.Jlist.push(try1);
+    console.log('提交之后，添加数据过后的List数组',List);
+    var x='Jlist'+that.data.Tid;
     console.log('组合更新的数组id=',x);
-    this.setData({
-      Jlist:List
+    console.log('提交之后，更新前的本地data里的Jlist=',that.data.Jlist);
+    that.setData({
+      Jlist:that.data.Jlist
     })
+    console.log('提交之后，更新后的本地data里的Jlist=',that.data.Jlist);
     DB.where({
-      _id:'fc5ac5c95fbe6492003e26000c131429'
+      _id:'jude111h2h3'
     }).update({
       data: {
         // _id:"judge1",
@@ -149,9 +148,9 @@ Page({
         console.log("添加失败", res)
       }
     })
-    let that=this
+    
     wx.cloud.database().collection("RealList").where({
-      _id:'fc5ac5c95fbe6492003e26000c131429'
+      _id:'jude111h2h3'
     }).get({
       success(res){
         console.log("请求成功",res)
@@ -219,7 +218,7 @@ Page({
     })
     //加载请求数据库并拉到本地
     wx.cloud.database().collection("RealList").where({
-      _id:'fc5ac5c95fbe6492003e26000c131429'
+      _id:'jude111h2h3'
     }).get({
       success(res){
         console.log("Jlist请求成功",res)
