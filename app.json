@@ -1,9 +1,10 @@
 {
   "pages": [
-    
     "pages/index/index",
-    "pages/index4/index4",
     "pages/Cai/D1/D1-1L-1D/D1-1L-1D-C1/cai1",
+    
+    "pages/index4/index4",
+   
     "pages/try/try",
     "pages/logs/logs",
     "pages/DongQu/DongQ",
@@ -22,17 +23,20 @@
     "request": 3000
   },
   "tabBar": {
+    "color":"#8a8a8a",
+    "selectedColor":"#444",
+    "backgroundColor": "#f4f4f4",
     "list": [
       {
         "pagePath": "pages/index/index",
-        "iconPath": "images/Shitang.jpg",
-        "selectedIconPath": "images/Shitang2.jpg",
+        "iconPath": "images/restaurant-line.png",
+        "selectedIconPath": "images/restaurant-fill.png",
         "text": "首页"
       },
       {
         "pagePath": "pages/try/try",
-        "iconPath": "images/wode.jpg",
-        "selectedIconPath": "images/wode2.jpg",
+        "iconPath": "images/icon_mine.png",
+        "selectedIconPath": "images/icon_mine_fill.png",
         "text": "我的"
       }
     ]

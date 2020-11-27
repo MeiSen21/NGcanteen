@@ -14,8 +14,36 @@ Page({
     ],
     Firstfloor:'东一一楼',
     Secondfloor:'东二二楼',
-    Fid1:11,
-    Fid2:12,
+    hotList: [
+      {
+        coverImg: '',
+        title: '东一',
+        playNum: '4.7万',
+        commentNum: '977',
+        avid: 'av1'
+      },
+      {
+        coverImg: '',
+        title: '东二',
+        playNum: '4.7万',
+        commentNum: '977',
+        avid: 'av2'
+      },
+      {
+        coverImg: '',
+        title: '北一',
+        playNum: '4.7万',
+        commentNum: '977',
+        avid: 'av3'
+      },
+      {
+        coverImg: '',
+        title: '北二',
+        playNum: '4.7万',
+        commentNum: '977',
+        avid: 'av4'
+      }
+    ],
     imgurls:[
       {
         

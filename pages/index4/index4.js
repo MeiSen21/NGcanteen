@@ -4,7 +4,7 @@ let local="东区"
 let year="大一"
 let nickname=""
 let head_icon=""
-let openid="oZBsQ5Ks3QJUepqqKvMpSlK8unBo"
+let openid=""
 const app = getApp()
 Page({
 
@@ -63,7 +63,9 @@ Page({
       },
       success(res) {
         console.log("添加成功", res)
-
+        wx.switchTab({
+          url: '../index/index'
+        })
       },
       fail(res) {
         console.log("添加失败", res)
@@ -85,6 +87,26 @@ Page({
         console.log("获取openid成功", res.result.openid)
         openid = res.result.openid;
         
+        wx.cloud.database().collection('user').where({
+          _openid: openid // 填入当前用户 openid
+        }).count({
+    
+          success(res) {
+           
+            if(res.total)
+            
+            { console.log("存在该用户", res);
+               wx.switchTab({
+              url: '../index/index'
+            })}
+            else{console.log("可登记", res)}
+          },
+          fail(res) {
+            console.log("可登记", res)
+           
+          }
+        })
+
         // console.log(openid)
       },
       fail(res) {
@@ -95,19 +117,9 @@ Page({
 
     })
 
-    let that = this
+   
     console.log(openid)
-    wx.cloud.database().collection('user').doc('openid').get({
-      success(res) {
-        console.log("已存在该用户", res)
-        wx.switchTab({
-          url: '../index/index'
-        })
-      },
-      fail(res) {
-        console.log("可登记", res)
-      }
-    })
+   
 
 
 

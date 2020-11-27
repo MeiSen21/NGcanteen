@@ -1,7 +1,7 @@
 //app.js
 App({
   onLaunch: function () {
-
+    globalData:{}
     wx.cloud.init({
       env:"haha38-8g44fh4lad30b0f0"
  
