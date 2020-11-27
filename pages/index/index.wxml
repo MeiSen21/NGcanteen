@@ -2,20 +2,34 @@
 <!-- <modal hidden="{{hidden}}" title="提示" confirm-text="东区" cancel-text="北区" bindcancel="cancel" bindconfirm="confirm" >
 选择你所在的区域
 </modal> -->
-
+<import src="../public/item.wxml"/>
 
 <view class="container">
 
   <scroll-view class="scroll-view" scroll-x="true">
     <view class="scroll-view">
       
-        <view class="normal {{currentIndex==0?'select':''}}" bindtap="switchNav" id="0">东一</view>
+        <navigator class="normal {{currentIndex==0?'select':''}}" bindtap="switchNav" id="0" >
+          东一
+           <!-- <view class="dao " >东一</view> -->
+        </navigator>
 
-        <view class="normal {{currentIndex==1?'select':''}}" bindtap="switchNav" id="1">东二</view>
-        
-        <view class="normal {{currentIndex==2?'select':''}}" bindtap="switchNav" id="2">北一</view>
-   
-        <view class="normal {{currentIndex==3?'select':''}}" bindtap="switchNav" id="3">北二</view>
+        <navigator class="normal {{currentIndex==1?'select':''}}" bindtap="switchNav" id="1">
+          东二
+          <!-- <view class="dao ">东二</view> -->
+        </navigator>
+
+        <navigator class="normal {{currentIndex==2?'select':''}}" bindtap="switchNav" id="2">
+          北一
+          <!-- <view class="dao " >北一</view> -->
+        </navigator>
+
+        <navigator class="normal {{currentIndex==3?'select':''}}" bindtap="switchNav" id="3">
+          北二
+          <!-- <view class="dao " >北二</view> -->
+        </navigator>
+
+       
       
     </view>
   </scroll-view>
@@ -40,6 +54,24 @@
   </swiper>
 
 
+  <view class="row-container">
+    <navigator class="header">
+      <view class="left">
+        <view class="bilibili-index-sprite bilibili-index-hot"></view>
+        <text>热门推荐</text>
+      </view>
+      <view class="right hot">
+        <view class="bilibili-index-sprite bilibili-index-ranking"></view>
+        <text>排行榜</text>
+      </view>
+    </navigator>
+    <view class="content-wrapper">
+      <block wx:for="{{hotList}}" wx:key="avid">
+        <!-- 使用热门推荐模板，传入当前循环对象item -->
+        <template is="jiefItem1" data="{{...item}}"/>
+      </block>
+    </view>
+  </view>
 
 
 

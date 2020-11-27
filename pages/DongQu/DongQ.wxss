@@ -1,4 +1,9 @@
 /* pages/DongQu/DongQ.wxss */
+page {
+  overflow: auto;
+  min-height: 100%;
+  background-color: #f4f4f4;
+}
 .container-First{
   display: flex;
   flex-direction: row;
